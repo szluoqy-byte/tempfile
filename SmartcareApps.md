@@ -1,43 +1,42 @@
 # SmartcareApps Memory
 
-## Product Entry
+## 产品与系统入口
 
-- Product name: SmartcareApps.
-- Related GUI test flows can enter through the ADC page.
-- Asset list related entry: log in to ADC page > Data Visualization menu > left gear icon > Asset Management page > Asset List tab.
+- 产品名：SmartcareApps。
+- SmartcareApps 相关 GUI 测试通常从 ADC 页面进入。
+- 进入产品页面后，优先按当前需求提供的菜单路径执行；若需求涉及数据可视化模块，常见入口为 ADC 页面中的“数据可视化”菜单。
 
-## Roles And Accounts
+## 菜单与入口清单
 
-- Common execution user/role for GUI scenario tests: admin user.
-- If a specific account, password, tenant, region, or permission boundary is required, confirm it in the current input before generating executable cases.
+| 一级入口 | 二级入口 | 三级入口 | 四级入口 | 五级入口 | 入口用途/适用范围 |
+|---|---|---|---|---|---|
+| ADC 页面 | 数据可视化菜单 |  |  |  | 数据可视化相关功能的常见入口 |
+| ADC 页面 | 数据可视化菜单 | 左侧齿轮图标 |  |  | 数据可视化管理、设置或配置类页面的常见入口 |
+| ADC 页面 | 数据可视化菜单 | 左侧齿轮图标 | 资产管理页面 |  | 资产管理类页面的常见入口 |
 
-## Asset Management And Asset List
+后续确认新的稳定菜单、页面或入口后，可继续追加到本清单。
 
-- Asset List is a tab under the Asset Management page.
-- The Asset List page generally contains an asset name input, an asset type selector, a query button, an asset list table, pagination, and total count display.
-- Query is the main action for refreshing the asset list by filter conditions.
-- Asset List supports querying by asset name, querying by asset type, and querying by the combination of asset name and asset type.
-- After query, table data, pagination, and total count should refresh with the current conditions.
-- After query, selected or entered filter conditions should remain observable.
-- When there is no matched data, the page should show an understandable empty result instead of an abnormal page state.
+入口说明：
 
-## Test Data Preparation
+- “ADC 页面”通常作为 SmartcareApps GUI 测试的起始页面。
+- “数据可视化菜单”通常承载数据可视化相关功能入口。
+- “左侧齿轮图标”通常代表管理、设置或配置类入口；用例步骤可写成“点击左侧齿轮图标”，但如果当前需求给出更明确的菜单名，应优先使用当前需求中的名称。
 
-- Asset List GUI tests usually require Data Visualization to be deployed.
-- Asset List GUI tests usually require SOC data source, DIS data source, and queryable asset object data to be prepared.
-- Asset object data should cover data source, component, dashboard, and story line where applicable.
+## 角色与账号
 
-## GUI Assertion Focus
+- GUI 场景测试中常见执行用户/角色为 admin 用户。
+- 生成可执行用例前，应从当前输入、测试环境或用户确认中获取所需账号、权限和数据归属信息。
 
-- Tab visibility and selected state.
-- Filter area: asset name input, asset type selector, query button.
-- Table area: table headers, row data, empty state.
-- Pagination area: pagination entry, current page, total count or statistics.
-- Query result: result range, pagination total, and filter condition retention.
+## 用例生成偏好
 
-## Pending Confirmation
+- SmartcareApps 的 GUI 场景用例应优先使用产品真实菜单、页签、按钮和页面区域名称。
+- 如果当前输入没有提供具体入口、按钮、页签或提示文案，不应基于单次历史需求猜测，应写入待确认信息或使用中性可替换表达。
+- 管理类页面的 GUI 用例可优先关注入口可达、页面区域展示、筛选条件、结果区域、分页区域、提示信息和操作后状态保持等可观察对象。
 
-- Asset type display values and order may include data source, component, dashboard, and story line; exact wording and order should follow the current requirement or design document.
-- The Chinese wording for dashboard may appear as "仪表板" or "仪表盘"; use the current requirement or design document as the source of truth.
-- Asset name input length limit may be 256 characters; confirm from the current requirement or design document before generating boundary cases.
-- Asset list table headers and association count field wording should follow the current requirement or design document.
+## 不应沉淀到本 Memory 的内容
+
+- 不沉淀单次新需求中的新增页签、字段清单、接口路径、接口字段、枚举顺序、长度限制、表头字段、性能指标或资料要求。
+- 不沉淀单次测试用例中的具体测试数据、资产对象、接口样例、页面实现方式或开发组件名称。
+- 不沉淀具体账号、密码、租户、区域、权限边界和数据归属等环境敏感或项目实例化信息。
+- 不把设计文档中的需求规则复制到 memory；这类信息应由当前需求输入、设计文档或测试用例设计输入承载。
+- 如果历史用例与当前设计文档存在文案、枚举、入口或字段差异，以当前需求输入为准。
